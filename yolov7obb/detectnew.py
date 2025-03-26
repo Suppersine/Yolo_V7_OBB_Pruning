@@ -7,16 +7,16 @@ import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
 
-from yolov7obb.models.experimental import attempt_load
-from yolov7obb.utils.datasets import LoadStreams, LoadImages
-from yolov7obb.utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, non_max_suppression_obb, \
+from models.experimentalnew import attempt_load
+from utils.datasets import LoadStreams, LoadImages
+from utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, non_max_suppression_obb, \
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
-from yolov7obb.utils.plots import plot_one_box
-from yolov7obb.utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
+from utils.plots import plot_one_box
+from utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
 
-from yolov7obb.utils.rboxs_utils import poly2rbox, rbox2poly
-from yolov7obb.utils.general import non_max_suppression_obb, scale_polys
-from yolov7obb.utils.plots import Annotator, colors
+from utils.rboxs_utils import poly2rbox, rbox2poly
+from utils.general import non_max_suppression_obb, scale_polys
+from utils.plots import Annotator, colors
 
 def detect(save_img=False):
     source, weights, view_img, save_txt, imgsz, trace = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size, not opt.no_trace
