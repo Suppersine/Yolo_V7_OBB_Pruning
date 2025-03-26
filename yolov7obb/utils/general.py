@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # YOLOR general utils
 
 import glob
@@ -125,13 +126,41 @@ def check_requirements(requirements='requirements.txt', exclude=()):
         print(emojis(s))  # emoji-safe
 
 
+# +
+#Admin's original, used in the training mode
 def check_img_size(img_size: Tuple[int, int], s=32):
     # Verify img_size is a multiple of stride s
-    new_size = tuple(map(lambda x: make_divisible(x, int(s)), img_size))  # ceil gs-multiple
+    new_size = int(map(lambda x: make_divisible(x, int(s)), img_size))  # ceil gs-multiple
     if new_size != img_size:
         print('WARNING: --img-size %g must be multiple of max stride %g, updating to %g' % (img_size, s, new_size))
     return new_size
 
+#our updates, demi-universal
+def check_img_size_demi(img_size: Tuple[int, int], s=32):
+    # Verify img_size is a multiple of stride s
+    new_size = tuple(map(lambda x: make_divisible(x, int(s)), img_size))  # ceil gs-multiple
+    if new_size != img_size:
+        print(f'WARNING: --img-size {img_size} must be multiple of max stride {s}, updating to {new_size}')
+    return new_size
+
+#our updates, used in the detection/predicion mode
+def check_img_size(img_size, s=32):
+    import math
+    if isinstance(img_size, tuple):
+        new_size = tuple(make_divisible(x, int(s)) for x in img_size)
+        if new_size != img_size:
+            print(f'WARNING: --img-size {img_size} must be multiple of max stride {s}, updating to {new_size}')
+        return new_size
+    elif isinstance(img_size, int):
+        new_size = make_divisible(img_size, int(s))
+        if new_size != img_size:
+            print(f'WARNING: --img-size {img_size} must be multiple of max stride {s}, updating to {new_size}')
+        return new_size
+    else:
+        raise TypeError(f"img_size must be either tuple or int, not {type(img_size)}")
+
+
+# -
 
 def check_imshow():
     # Check if environment supports image displays
