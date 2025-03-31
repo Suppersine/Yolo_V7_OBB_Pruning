@@ -9,7 +9,7 @@ from numpy import random
 
 from yolov7obb.models.experimental import attempt_load
 from yolov7obb.utils.datasets import LoadStreams, LoadImages
-from yolov7obb.utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, non_max_suppression_obb, \
+from yolov7obb.utils.general import check_img_size_detect, check_requirements, check_imshow, non_max_suppression, apply_classifier, non_max_suppression_obb, \
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
 from yolov7obb.utils.plots import plot_one_box
 from yolov7obb.utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
