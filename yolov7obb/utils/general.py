@@ -144,7 +144,7 @@ def check_img_size_demi(img_size: Tuple[int, int], s=32):
     return new_size
 
 #our updates, used in the detection/predicion mode
-def check_img_size(img_size, s=32):
+def check_img_size_detect(img_size, s=32):
     import math
     if isinstance(img_size, tuple):
         new_size = tuple(make_divisible(x, int(s)) for x in img_size)

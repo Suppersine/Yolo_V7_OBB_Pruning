@@ -212,8 +212,8 @@ class LoadImages:  # for inference
             #print(f'image {self.count}/{self.nf} {path}: ', end='')
 
         # Padded resize
-        img = letterbox(img0, self.img_size, stride=self.stride)[0] #switch on manually in the IDE when in the training mode
-        #img = letterbox_detect(img0, self.img_size, stride=self.stride)[0] #switch on manually in the IDE when in the detection/prediction mode
+        #img = letterbox(img0, self.img_size, stride=self.stride)[0] #switch on manually in the IDE when in the training mode
+        img = letterbox_detect(img0, self.img_size, stride=self.stride)[0] #switch on manually in the IDE when in the detection/prediction mode
 
         # Convert
         img = img[:, :, ::-1].transpose(2, 0, 1)  # BGR to RGB, to 3x416x416
